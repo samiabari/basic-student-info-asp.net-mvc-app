@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Student>
+
+<div class="datatable">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#Student-ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Courses</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Student student in Model)
+            {
+                <tr>
+                    <th scope="row">@student.StudentId</th>
+                    <td>@student.StudentName</td>
+                    <td>
+                        <div class="course-datatable">
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#Course Id</th>
+                                        <th scope="col">Course-Name</th>
+                                        <th scope="col">Instructor-Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var course in student.Courses)
+                                    {
+                                        <tr>
+                                            <th scope="row">@course.CourseId</th>
+                                            <td>@course.CourseName</td>
+                                            <td>@course.Teacher.TeacherName</td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
